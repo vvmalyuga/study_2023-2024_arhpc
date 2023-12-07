@@ -1,0 +1,21 @@
+%include 'in_out.asm'
+SECTION .data
+   div: DB 'Результат: ',0
+SECTION .text
+GLOBAL _start
+   _start:
+   ; ---- Вычисление выражения (3+2)*4+5
+   mov ebx,3
+   mov eax,2
+   add ebx,eax
+   mov eax,ebx  ; присвоила значение ebx регистру eax 
+   mov ecx,4
+   mul ecx
+   add eax,5    ; поменяла ebx на eax 
+   mov edi,eax  ; поменяла ebx на eax
+   ; ---- Вывод результата на экран
+   mov eax,div
+   call sprint
+   mov eax,edi
+   call iprintLF
+   call quit
